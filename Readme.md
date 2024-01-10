@@ -12,8 +12,7 @@ The app is a Telegram Bot that allows you to manage a list of DevOps tasks. The 
 
 ## Requirements
 
-- Python 3.10
+- Python 3.11
 - MySQL 8.0
 - python-telegram-bot API 7.0
 - mysql-connector-python 8.2.0
-
