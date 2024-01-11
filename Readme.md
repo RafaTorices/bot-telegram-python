@@ -4,7 +4,7 @@ Sample App based on [python-telegram-bot](https://core.telegram.org/bots/api) th
 
 ## Author
 
-Rafael Torices
+RAFAEL TORICES
 
 ## Description
 
