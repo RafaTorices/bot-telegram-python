@@ -3,9 +3,9 @@ class TelegramConfig():
     APIURL = 'https://api.telegram.org/bot'
     TOKEN = '6407826451:AAEu6Tx2BVpht8BvA-yDtYzwip3aKRPsYP4'
     TITULO_APP = "TriangleAppBot\n\n"
-    TELEFONO_SOPORTE = "667741333"
+    TELEFONO_SOPORTE = ""
     CHAT_ID_SOPORTE = "409645379"
-    EMAIL_SOPORTE = "\n\nsoporte@rafaeltorices.com\n"
+    EMAIL_SOPORTE = ""
 
 # Configuracion de MySQL
 

@@ -1,6 +1,6 @@
 class Opciones():
     def enviarOpciones(self):
-        opciones = [["/Opcion1", "/2", "/3", "/4"]]
+        opciones = [["1", "2", "3", "4"]]
         keyboard = {
             "keyboard": opciones,
             "one_time_keyboard": True,

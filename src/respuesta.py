@@ -51,11 +51,31 @@ class Respuesta():
                     self.usuario.listadoUsuariosAutorizados()+self.config.EMAIL_SOPORTE
                 self.metodos.sendMessage(
                     self.config.CHAT_ID_SOPORTE, respuesta)
+        elif text == '1':
+            respuesta = self.config.TITULO_APP + \
+                "Eres el number one !! \n\n"
+            self.metodos.sendMessage(
+                chatId, respuesta)
+        elif text == '2':
+            respuesta = self.config.TITULO_APP + \
+                "Eres el number two !! \n\n"
+            self.metodos.sendMessage(
+                chatId, respuesta)
+        elif text == '3':
+            respuesta = self.config.TITULO_APP + \
+                "Eres el number three !! \n\n"
+            self.metodos.sendMessage(
+                chatId, respuesta)
+        elif text == '4':
+            respuesta = self.config.TITULO_APP + \
+                "Eres el number four !! \n\n"
+            self.metodos.sendMessage(
+                chatId, respuesta)
         else:
             respuesta = self.config.TITULO_APP + \
                 "Lo siento "+first_name + \
-                ", pero no entiendo lo que me dices ("+text+" - "+chatId + \
-                ")\n\nPrueba con una de mis /OPCIONES"+self.config.EMAIL_SOPORTE
+                ", pero no entiendo lo que me dices !!\n\nPrueba con una de mis /OPCIONES" + \
+                self.config.EMAIL_SOPORTE
             self.metodos.sendMessage(chatId, respuesta)
             keyboard = self.opciones.enviarOpciones()
             return self.metodos.sendKeyboard(chatId, keyboard)
