@@ -1,11 +1,15 @@
 # Clase para estado del sistema
+import pymysql
 from mysql import MySQL
 
 
 class Estado():
     def __init__(self):
         mysql = MySQL()
-        self.conexion = mysql.conexion
+        self.conexion = pymysql.connect(host=mysql.host,
+                                        user=mysql.user,
+                                        password=mysql.password,
+                                        database=mysql.db)
 
     def comprobarEstado(self):
         self.cursor = self.conexion.cursor()
