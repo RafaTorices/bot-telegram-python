@@ -1,8 +1,8 @@
 # Parametros de configuracion del servicio
 class TelegramConfig():
     APIURL = 'https://api.telegram.org/bot'
-    TOKEN = '6772558312:AAFRP4s5tZZQy2L3APUqF6AHIUTU_2sSuwU'
-    TITULO_APP = "DevopsTorBot\n\n"
+    TOKEN = '6407826451:AAEu6Tx2BVpht8BvA-yDtYzwip3aKRPsYP4'
+    TITULO_APP = "TriangleAppBot\n\n"
     TELEFONO_SOPORTE = "667741333"
     CHAT_ID_SOPORTE = "409645379"
     EMAIL_SOPORTE = "\n\nsoporte@rafaeltorices.com\n"
@@ -11,8 +11,8 @@ class TelegramConfig():
 
 
 class MySQLConfig():
-    DB_HOST = ""
-    DB_USER = ""
-    DB_PASSWORD = ""
-    DB_NAME = ""
-    DB_PORT = ""
+    DB_HOST = "172.17.0.3"
+    DB_USER = "devops"
+    DB_PASSWORD = "devops"
+    DB_NAME = "devops"
+    DB_PORT = 3306

@@ -1,8 +1,8 @@
 
 from flask import Flask, request, render_template
-from app.servicio import Servicio
+from servicio import Servicio
 
-app = Flask(__name__, template_folder='app/templates')
+app = Flask(__name__, template_folder='templates')
 
 
 @app.route('/', methods=['POST', 'GET'])
@@ -20,4 +20,4 @@ def __init__():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run()
