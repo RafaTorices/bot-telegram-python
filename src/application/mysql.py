@@ -1,4 +1,4 @@
-from config import MySQLConfig
+from application.config import MySQLConfig
 
 
 class MySQL():

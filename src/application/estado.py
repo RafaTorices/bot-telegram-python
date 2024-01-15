@@ -1,6 +1,6 @@
 # Clase para estado del sistema
 import pymysql
-from mysql import MySQL
+from application.mysql import MySQL
 
 
 class Estado():

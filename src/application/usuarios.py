@@ -1,9 +1,10 @@
 import pymysql
-from mysql import MySQL
-from config import TelegramConfig
+from application.mysql import MySQL
+from application.config import TelegramConfig
 
 
 class Usuario():
+
     def __init__(self):
         mysql = MySQL()
         self.conexion = pymysql.connect(host=mysql.host,

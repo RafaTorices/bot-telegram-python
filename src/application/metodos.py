@@ -1,4 +1,4 @@
-from config import TelegramConfig
+from application.config import TelegramConfig
 import requests
 import json
 

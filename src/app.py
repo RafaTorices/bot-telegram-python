@@ -1,12 +1,12 @@
 
 from flask import Flask, request, render_template
-from servicio import Servicio
+from application.servicio import Servicio
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='application/templates')
 
 
 @app.route('/', methods=['POST', 'GET'])
-def __init__():
+def inicio():
 
     # Compruebo si es un POST
     if request.method == 'POST':

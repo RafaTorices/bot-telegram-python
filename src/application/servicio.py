@@ -1,10 +1,10 @@
-from respuesta import Respuesta
-from metodos import MetodosTelegram
-from config import TelegramConfig
+from application.respuesta import Respuesta
+from application.metodos import MetodosTelegram
+from application.config import TelegramConfig
 import json
-from usuarios import Usuario
-from estado import Estado
-from opciones import Opciones
+from application.usuarios import Usuario
+from application.estado import Estado
+from application.opciones import Opciones
 
 
 class Servicio():
