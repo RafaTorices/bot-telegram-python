@@ -1,35 +1,94 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>TELEGRAM BOT WEBHOOK</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
-    <style>
-      body {
-        background-color: #000;
-        color: #fff;
-        font-family: sans-serif;
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-      p {
-        text-align: center;
-        margin: auto;
-        margin-top: 10%;
-        border-top: 1px solid #fff;
-        border-bottom: 1px solid #fff;
-        padding: 10px;
-      }
-    </style>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>TELEGRAM BOT WEBHOOK</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    p {
+      text-align: center;
+      margin: auto;
+      margin-top: 10%;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      padding: 10px;
+    }
+
+    nav {
+      background-color: #333;
+      color: white;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    div {
+      margin: auto;
+      text-align: center;
+    }
+
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      border-color: #fff;
+    }
+
+    td {
+      padding: 10px;
+      border: 1px solid #fff;
+    }
+
+    th {
+      padding: 10px;
+      border: 1px solid #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
     <p>
       TELEGRAM BOT WEBHOOK
       <br />
       by TriangleAppBot
     </p>
-  </body>
+    <nav>
+      <ul>
+        <li><a href="/">Index</a></li>
+        <li><a href="/listado_usuarios">Users List</a></li>
+        <li><a href="/ruta2">Ruta 2</a></li>
+        <!-- Agrega más enlaces según tus rutas -->
+      </ul>
+    </nav>
+    <div>
+      {% block content %}
+      <h2>Index Page</h2>
+      {% endblock %}
+    </div>
+  </div>
+</body>
+
 </html>

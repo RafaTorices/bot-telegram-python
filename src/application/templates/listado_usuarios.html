@@ -1,0 +1,36 @@
+<body>
+  <div>
+    {% extends "home.html" %}
+  </div>
+  <div>
+    {% block content %}
+    <h2>Users List</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>CHAT_ID</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if usuarios %}
+        {% for usuario in usuarios %}
+        <tr>
+          <td>
+            {{ usuario[2] }}
+          </td>
+          <td>
+            {{ usuario[1] }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      {% else %}
+      <div>No hay usuarios registrados</div>
+      {% endif %}
+    </table>
+    {% endblock %}
+  </div>
+</body>
+
+</html>
