@@ -1,5 +1,5 @@
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 import requests
 from application.servicio import Servicio
 from application.usuarios import Usuario
@@ -28,12 +28,28 @@ def index():
         return render_template('home.html')
 
 
-@app.route('/listado_usuarios', methods=['GET'])
-def listado_users():
+@app.route('/getWebhookInfo', methods=['GET'])
+def getWebhookInfo():
+    apiURL = "https://api.telegram.org/bot6407826451:AAEu6Tx2BVpht8BvA-yDtYzwip3aKRPsYP4/getWebhookInfo"
+    response = requests.get(apiURL)
+    if response.status_code == 200:
+        data = response.json()
+        return render_template('get_webhook_info.html', data=data)
+    else:
+        return render_template('get_webhook_info.html', error="Error: "+response)
+
+
+@app.route('/list_users', methods=['GET'])
+def list_users():
     usuarios = Usuario()
     usuarios = usuarios.listadoUsuarios()
-    return render_template('listado_usuarios.html', usuarios=usuarios)
+    return render_template('list_users.html', usuarios=usuarios)
 
 
 if __name__ == "__main__":
+    with app.test_request_context():
+        # Generate URLs using url_for()
+        home = url_for('index')
+        listusers = url_for('list_users')
+        getwebhookinfo = url_for('getWebhookInfo')
     app.run()

@@ -1,0 +1,42 @@
+<body>
+    <div>
+        {% extends "home.html" %}
+    </div>
+    <div>
+        {% block content %}
+        <h2>getStatusWebhook</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>OK?</th>
+                    <th>URL</th>
+                    <th>IP_address</th>
+                    <th>Messages Pending</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if data %}
+                <tr>
+                    <td>
+                        {{ data["ok"] }}
+                    </td>
+                    <td>
+                        {{ data["result"]["url"] }}
+                    </td>
+                    <td>
+                        {{ data["result"]["ip_address"] }}
+                    </td>
+                    <td>
+                        {{ data["result"]["pending_update_count"] }}
+                    </td>
+                </tr>
+            </tbody>
+            {% else %}
+            <div>Not info</div>
+            {% endif %}
+        </table>
+        {% endblock %}
+    </div>
+</body>
+
+</html>
