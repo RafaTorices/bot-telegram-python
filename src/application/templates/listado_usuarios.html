@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <th>FIRST_NAME</th>
+      <th>USERNAME</th>
       <th>ESTADO</th>
       <th></th>
     </tr>
@@ -21,7 +22,10 @@
           <p>{{ usuario[2] }}</p>
         </td>
         <td>
-          {% if (usuario[3] == 1) and (usuario[4] == 0) %}
+          <p>{{ usuario[3] }}</p>
+        </td>
+        <td>
+          {% if (usuario[4] == 1) and (usuario[5] == 0) %}
           <p style="color: greenyellow;">Activo</p>
           <input type="hidden" name="estado" value="1">
           {% else %}
@@ -30,7 +34,7 @@
           {% endif %}
         </td>
         <td>
-          {% if (usuario[3] == 1) and (usuario[4] == 0) %}
+          {% if (usuario[4] == 1) and (usuario[5] == 0) %}
           <button type="submit">Desactivar</button>
           {% else %}
           <button type="submit">Activar</button>

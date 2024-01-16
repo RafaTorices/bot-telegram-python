@@ -50,6 +50,7 @@ class Servicio():
                     # Obtengo los parametros del mensaje
                     chatId = str(dato['message']['chat']['id'])
                     first_name = str(dato['message']['chat']['first_name'])
+                    username = str(dato['message']['chat']['username'])
                     # date = dato['message']['date']
                     text = str(dato['message']['text'])
                 except Exception:
@@ -60,7 +61,7 @@ class Servicio():
                 usuarioActual = self.usuario.comprobarUsuario(chatId)
                 # Compruebo el usuario, si no esta guardado en BD lo guardo
                 if usuarioActual == 0:
-                    self.usuario.guardarUsuario(chatId, first_name)
+                    self.usuario.guardarUsuario(chatId, first_name, username)
                     # y le doy la bienvenida al sistema como usuario nuevo
                     text = self.tituloApp+"Hola "+first_name + \
                         " !!,\nBienvenido a nuestro sistema informático automatizado.\n\nAquí tienes nuestras /OPCIONES"+self.emailSoporte

@@ -22,10 +22,10 @@ class Usuario():
         rows = len(self.resultado)
         return rows
 
-    def guardarUsuario(self, chatId, first_name):
+    def guardarUsuario(self, chatId, first_name, username):
         self.cursor = self.conexion.cursor()
-        self.sql = "INSERT INTO usuarios (chatId, first_name) VALUES ( %s, %s)"
-        datosUsuario = (chatId, first_name)
+        self.sql = "INSERT INTO usuarios (chatId, first_name, username) VALUES ( %s, %s, %s)"
+        datosUsuario = (chatId, first_name, username)
         self.cursor.execute(self.sql, datosUsuario)
         self.conexion.commit()
 
@@ -53,7 +53,7 @@ class Usuario():
 
     def listadoUsuarios(self):
         self.cursor = self.conexion.cursor()
-        self.sql = "SELECT CONCAT (id, '-', chatid, '-',first_name) AS usuario FROM usuarios ORDER BY id DESC"
+        self.sql = "SELECT CONCAT (id, '-', chatid, '-',first_name, '-', username) AS usuario FROM usuarios ORDER BY id DESC"
         self.cursor.execute(self.sql)
         self.resultado = self.cursor.fetchall()
         listadoUsuarios = list()
@@ -66,7 +66,7 @@ class Usuario():
 
     def listadoUsuariosWeb(self):
         self.cursor = self.conexion.cursor()
-        self.sql = "SELECT id, chatid, first_name, autorizado, pendiente FROM usuarios ORDER BY id DESC"
+        self.sql = "SELECT id, chatid, first_name, username, autorizado, pendiente FROM usuarios ORDER BY id DESC"
         self.cursor.execute(self.sql)
         self.resultado = self.cursor.fetchall()
         return self.resultado
@@ -92,7 +92,7 @@ class Usuario():
 
     def listadoUsuariosPendientes(self):
         self.cursor = self.conexion.cursor()
-        self.sql = "SELECT CONCAT (id, '-', chatid, '-',first_name) AS usuario FROM usuarios WHERE pendiente = 1 ORDER BY id DESC"
+        self.sql = "SELECT CONCAT (id, '-', chatid, '-',first_name, '-', username) AS usuario FROM usuarios WHERE pendiente = 1 ORDER BY id DESC"
         self.cursor.execute(self.sql)
         self.resultado = self.cursor.fetchall()
         listadoUsuarios = list()
@@ -105,7 +105,7 @@ class Usuario():
 
     def listadoUsuariosAutorizados(self):
         self.cursor = self.conexion.cursor()
-        self.sql = "SELECT CONCAT (id, '-', chatid, '-',first_name) AS usuario FROM usuarios WHERE autorizado = 1 ORDER BY id DESC"
+        self.sql = "SELECT CONCAT (id, '-', chatid, '-',first_name, '-', username) AS usuario FROM usuarios WHERE autorizado = 1 ORDER BY id DESC"
         self.cursor.execute(self.sql)
         self.resultado = self.cursor.fetchall()
         listadoUsuarios = list()
