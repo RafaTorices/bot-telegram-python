@@ -1,8 +1,25 @@
+import pymysql
+from application.mysql import MySQL
+from application.config import TelegramConfig
+
+
 class Opciones():
+
+    def __init__(self):
+        mysql = MySQL()
+        self.conexion = pymysql.connect(host=mysql.host,
+                                        user=mysql.user,
+                                        password=mysql.password,
+                                        database=mysql.db)
+
     def enviarOpciones(self):
-        opciones = [["1", "2", "3", "4"]]
+        self.cursor = self.conexion.cursor()
+        self.sql = "SELECT opcion FROM opciones"
+        self.cursor.execute(self.sql)
+        self.resultado = self.cursor.fetchall()
+        # opciones = [["1", "2", "3", "4"]]
         keyboard = {
-            "keyboard": opciones,
+            "keyboard": self.resultado,
             "one_time_keyboard": True,
             "remove_keyboard": True,
             "resize_keyboard": True,
