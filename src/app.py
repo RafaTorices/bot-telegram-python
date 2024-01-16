@@ -40,10 +40,16 @@ def listado_usuarios():
     return render_template('listado_usuarios.html', usuarios=usuarios)
 
 
+@app.route('/estado_servicio', methods=['GET'])
+def estado_servicio():
+    return render_template('estado_servicio.html')
+
+
 if __name__ == "__main__":
     with app.test_request_context():
         # Generate URLs using url_for()
         home = url_for('index')
         listadousuarios = url_for('listado_usuarios')
         getwebhookinfo = url_for('getWebhookInfo')
+        estadoservicio = url_for('estado_servicio')
     app.run()
