@@ -34,12 +34,12 @@
           <td>
             {% if (usuario[3] == 0) and (usuario[4] == 1) %}
             <form action="{{ url_for('activar_usuario_') }}" method="post">
-              <input type="text" name="id" id="id" value="{{ usuario[0] }}">
+              <input type="text" name="id" value="{{ usuario[0] }}">
               <input type="submit" value="Activar">
             </form>
             {% else %}
             <form action="{{ url_for('desactivar_usuario_') }}" method="post">
-              <input type="text" name="id" id="id" value="{{ usuario[0] }}">
+              <input type="text" name="id" value="{{ usuario[0] }}">
               <input type="submit" value="Desactivar">
               {% endif %}
           </td>

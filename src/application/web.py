@@ -21,7 +21,7 @@ def listado_usuarios():
     return render_template('listado_usuarios.html', usuarios=usuarios)
 
 
-def activar_usuario():
+def activar_usuario(id):
     if request.method == 'POST':
         id = request.form['id']
         usuario = Usuario()
@@ -30,7 +30,7 @@ def activar_usuario():
         return render_template('listado_usuarios.html', usuarios=usuarios)
 
 
-def desactivar_usuario():
+def desactivar_usuario(id):
     if request.method == 'POST':
         id = request.form['id']
         usuario = Usuario()
