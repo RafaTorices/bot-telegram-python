@@ -46,7 +46,8 @@ def activar_desactivar_usuario_():
     first_name = request.form['first_name']
     id = request.form['id']
     estado = request.form['estado']
-    return activar_desactivar_usuario(id, first_name, estado)
+    chatId = request.form['chatId']
+    return activar_desactivar_usuario(id, first_name, chatId, estado)
 
 
 @app.route('/estado_servicio', methods=['POST', 'GET'])

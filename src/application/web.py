@@ -4,6 +4,7 @@ from application.usuarios import Usuario
 from application.config import TelegramConfig
 from application.estado import Estado
 from application.opciones import Opciones
+from application.metodos import MetodosTelegram
 
 
 def getWebhookInfo():
@@ -40,18 +41,26 @@ def editar_opcion(id):
         return render_template('listado_opciones.html', opciones=opciones, mensaje=mensaje)
 
 
-def activar_desactivar_usuario(id, first_name, estado):
+def activar_desactivar_usuario(id, first_name, chatId, estado):
     if request.method == 'POST':
         id = request.form['id']
         first_name = request.form['first_name']
+        chatId = request.form['chatId']
         estado = request.form['estado']
         usuario = Usuario()
+        metodos = MetodosTelegram()
         if (estado == "1"):
             usuario.desactivarUsuarioWeb(id)
-            mensaje = "Usuario " + first_name + " desactivado correctamente."
+            mensaje = "Usuario " + first_name + \
+                " desactivado correctamente e informado por Telegram."
+            metodos.sendMessage(
+                chatId, "Hola "+first_name+", tu usuario ha sido desactivado. Contacta con Soporte para más información.")
         else:
             usuario.activarUsuarioWeb(id)
-            mensaje = "Usuario " + first_name + " activado correctamente."
+            mensaje = "Usuario " + first_name + \
+                " activado correctamente e informado por Telegram."
+            metodos.sendMessage(
+                chatId, "Hola "+first_name+", tu usuario ha sido activado. Ya puedes utilizar el Bot.")
         usuarios = usuario.listadoUsuariosWeb()
         return render_template('listado_usuarios.html', usuarios=usuarios, mensaje=mensaje)
 

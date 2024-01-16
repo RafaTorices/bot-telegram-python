@@ -1,6 +1,5 @@
 import pymysql
 from application.mysql import MySQL
-from application.config import TelegramConfig
 
 
 class Opciones():
