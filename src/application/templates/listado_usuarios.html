@@ -18,18 +18,21 @@
         {% if usuarios %}
         {% for usuario in usuarios %}
         <tr>
-          <form action="" method="post">
+          <form action="{{ url_for('activar_desactivar_usuario_') }}" method="post">
             <td>
-              <div>{{ usuario[1] }}</div>
+              <input type="hidden" name="id" value="{{ usuario[0] }}">
+              <input type="text" name="chat_id" value="{{ usuario[1] }}">
             </td>
             <td>
-              <div>{{ usuario[2] }}</div>
+              <input type="text" name="first_name" value="{{ usuario[2] }}">
             </td>
             <td>
               {% if (usuario[3] == 1) and (usuario[4] == 0) %}
               <div style="color: greenyellow;">Activo</div>
+              <input type="hidden" name="estado" value="1">
               {% else %}
               <div style="color: red;">Inactivo</div>
+              <input type="hidden" name="estado" value="0">
               {% endif %}
             </td>
             <td>
@@ -43,6 +46,9 @@
         </tr>
         {% endfor %}
       </tbody>
+      {% if mensaje %}
+      <div style="color: gold;">{{ mensaje }}</div>
+      {% endif %}
       {% else %}
       <div>No hay usuarios</div>
       {% endif %}

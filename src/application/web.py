@@ -40,22 +40,20 @@ def editar_opcion(id):
         return render_template('listado_opciones.html', opciones=opciones, mensaje=mensaje)
 
 
-def activar_usuario(id):
+def activar_desactivar_usuario(id, first_name, estado):
     if request.method == 'POST':
         id = request.form['id']
+        first_name = request.form['first_name']
+        estado = request.form['estado']
         usuario = Usuario()
-        usuario.activarUsuarioWeb(id)
+        if (estado == "1"):
+            usuario.desactivarUsuarioWeb(id)
+            mensaje = "Usuario " + first_name + " desactivado correctamente."
+        else:
+            usuario.activarUsuarioWeb(id)
+            mensaje = "Usuario " + first_name + " activado correctamente."
         usuarios = usuario.listadoUsuariosWeb()
-        return render_template('listado_usuarios.html', usuarios=usuarios)
-
-
-def desactivar_usuario(id):
-    if request.method == 'POST':
-        id = request.form['id']
-        usuario = Usuario()
-        usuario.desactivarUsuarioWeb(id)
-        usuarios = usuario.listadoUsuariosWeb()
-        return render_template('listado_usuarios.html', usuarios=usuarios)
+        return render_template('listado_usuarios.html', usuarios=usuarios, mensaje=mensaje)
 
 
 def estado_servicio():
