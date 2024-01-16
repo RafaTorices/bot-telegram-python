@@ -33,17 +33,17 @@ def getWebhookInfo():
         return render_template('get_webhook_info.html', error="Error: "+response)
 
 
-@app.route('/list_users', methods=['GET'])
-def list_users():
+@app.route('/listado_usuarios', methods=['GET'])
+def listado_usuarios():
     usuarios = Usuario()
-    usuarios = usuarios.listadoUsuarios()
-    return render_template('list_users.html', usuarios=usuarios)
+    usuarios = usuarios.listadoUsuariosWeb()
+    return render_template('listado_usuarios.html', usuarios=usuarios)
 
 
 if __name__ == "__main__":
     with app.test_request_context():
         # Generate URLs using url_for()
         home = url_for('index')
-        listusers = url_for('list_users')
+        listadousuarios = url_for('listado_usuarios')
         getwebhookinfo = url_for('getWebhookInfo')
     app.run()

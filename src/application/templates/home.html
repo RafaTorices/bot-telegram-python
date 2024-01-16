@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>TELEGRAM BOT WEBHOOK</title>
+  <title>TELEGRAM BOT</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,14 +19,14 @@
     </p>
     <nav>
       <ul>
-        <li><a href="{{ url_for('index') }}">Index</a></li>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
         <li><a href="{{ url_for('getWebhookInfo') }}">getWebhookInfo</a></li>
-        <li><a href="{{ url_for('list_users') }}">List Users</a></li>
+        <li><a href="{{ url_for('listado_usuarios') }}">Listado Usuarios</a></li>
       </ul>
     </nav>
     <div>
       {% block content %}
-      <h2>Index Page</h2>
+      <h2>Home Page</h2>
       {% endblock %}
     </div>
   </div>

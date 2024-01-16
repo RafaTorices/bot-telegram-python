@@ -53,15 +53,22 @@ class Usuario():
 
     def listadoUsuarios(self):
         self.cursor = self.conexion.cursor()
+        self.sql = "SELECT CONCAT (id, '-', chatid, '-',first_name) AS usuario FROM usuarios ORDER BY id DESC"
+        self.cursor.execute(self.sql)
+        self.resultado = self.cursor.fetchall()
+        listadoUsuarios = list()
+        listadoUsuarios = list()
+        for row in self.resultado:
+            usuario = row[0]
+            listadoUsuarios.append(usuario)
+        usuarios = '\n'.join(listadoUsuarios)
+        return usuarios
+
+    def listadoUsuariosWeb(self):
+        self.cursor = self.conexion.cursor()
         self.sql = "SELECT id, chatid, first_name FROM usuarios ORDER BY id DESC"
         self.cursor.execute(self.sql)
         self.resultado = self.cursor.fetchall()
-        # listadoUsuarios = list()
-        # listadoUsuarios = list()
-        # for row in self.resultado:
-        #     usuario = row[0]
-        #     listadoUsuarios.append(usuario)
-        # usuarios = '\n'.join(listadoUsuarios)
         return self.resultado
 
     def listadoUsuariosPendientes(self):

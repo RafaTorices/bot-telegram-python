@@ -4,11 +4,11 @@
   </div>
   <div>
     {% block content %}
-    <h2>Users List</h2>
+    <h2>Listado de Usuarios</h2>
     <table border="1">
       <thead>
         <tr>
-          <th>NAME</th>
+          <th>FIRST_NAME</th>
           <th>CHAT_ID</th>
         </tr>
       </thead>
@@ -26,7 +26,7 @@
         {% endfor %}
       </tbody>
       {% else %}
-      <div>No hay usuarios registrados</div>
+      <div>No hay usuarios</div>
       {% endif %}
     </table>
     {% endblock %}
