@@ -4,7 +4,6 @@
 <table border="1">
   <thead>
     <tr>
-      <th>CHAT_ID</th>
       <th>FIRST_NAME</th>
       <th>ESTADO</th>
       <th></th>
@@ -17,10 +16,9 @@
       <form action="{{ url_for('activar_desactivar_usuario_') }}" method="post">
         <td>
           <input type="hidden" name="id" value="{{ usuario[0] }}">
-          <input type="text" name="chatId" value="{{ usuario[1] }}">
-        </td>
-        <td>
-          <input type="text" name="first_name" value="{{ usuario[2] }}">
+          <input type="hidden" name="chatId" value="{{ usuario[1] }}">
+          <input type="hidden" name="first_name" value="{{ usuario[2] }}">
+          <p>{{ usuario[2] }}</p>
         </td>
         <td>
           {% if (usuario[3] == 1) and (usuario[4] == 0) %}
