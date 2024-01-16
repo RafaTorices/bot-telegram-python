@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, url_for
 import requests
 from application.servicio import Servicio
 from application.usuarios import Usuario
+from application.config import TelegramConfig
 
 app = Flask(__name__, template_folder='application/templates',
             static_folder='application/static')
@@ -18,19 +19,12 @@ def index():
 
     # Si es una peticion GET le devuelvo la home html
     if request.method == 'GET':
-        # apiURL = "https://api.telegram.org/bot6407826451:AAEu6Tx2BVpht8BvA-yDtYzwip3aKRPsYP4/getWebhookInfo"
-        # response = requests.get(apiURL)
-        # if response.status_code == 200:
-        #     data = response.json()
-        #     return render_template('home.html', data=data)
-        # else:
-        #     return render_template('home.html', error="Error: "+response)
         return render_template('home.html')
 
 
 @app.route('/getWebhookInfo', methods=['GET'])
 def getWebhookInfo():
-    apiURL = "https://api.telegram.org/bot6407826451:AAEu6Tx2BVpht8BvA-yDtYzwip3aKRPsYP4/getWebhookInfo"
+    apiURL = TelegramConfig.APIURL+TelegramConfig.TOKEN+"/getWebhookInfo"
     response = requests.get(apiURL)
     if response.status_code == 200:
         data = response.json()
