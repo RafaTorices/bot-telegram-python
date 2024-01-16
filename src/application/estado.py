@@ -20,6 +20,15 @@ class Estado():
             estado = row[0]
             return estado
 
+    def comprobarEstadoWeb(self):
+        self.cursor = self.conexion.cursor()
+        self.sql = 'SELECT estado FROM estado WHERE id = 1'
+        self.cursor.execute(self.sql)
+        self.resultado = self.cursor.fetchall()
+        for row in self.resultado:
+            estado = row[0]
+            return estado
+
     def obtenerNotasEstado(self):
         self.cursor = self.conexion.cursor()
         self.sql = 'SELECT notas FROM estado WHERE id = 1'

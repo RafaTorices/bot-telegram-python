@@ -6,7 +6,23 @@
     {% block content %}
     <h2>Estado del Servicio</h2>
     <div>
-
+      {% if estado == 1 %}
+      <div style="color: aqua;">El servicio está activo</div>
+      <br />
+      <div>
+        <form action="{{ url_for('estado_servicio_') }}" method="post">
+          <input type="submit" value="DESACTIVAR SERVICIO" />
+        </form>
+      </div>
+      {% else %}
+      <div style="color: red;">El servicio está inactivo</div>
+      <br />
+      <div>
+        <form action="{{ url_for('estado_servicio_') }}" method="post">
+          <input type="submit" value="ACTIVAR SERVICIO" />
+        </form>
+      </div>
+      {% endif %}
     </div>
     {% endblock %}
   </div>
