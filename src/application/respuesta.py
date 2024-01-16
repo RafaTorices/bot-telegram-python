@@ -31,20 +31,20 @@ class Respuesta():
                 respuesta = self.config.TITULO_APP + \
                     "OK, SERVICIO DESACTIVADO"+self.config.EMAIL_SOPORTE
                 self.metodos.sendMessage(chatId, respuesta)
-        elif text == '/LISTADO_USUARIOS':
+        elif text == 'LISTADO_USUARIOS':
             if chatId == self.config.CHAT_ID_SOPORTE:
                 respuesta = self.config.TITULO_APP + \
                     "LISTADO DE USUARIOS: \n\n"+self.usuario.listadoUsuarios()+self.config.EMAIL_SOPORTE
                 self.metodos.sendMessage(
                     self.config.CHAT_ID_SOPORTE, respuesta)
-        elif text == '/LISTADO_USUARIOS_PENDIENTES':
+        elif text == 'LISTADO_USUARIOS_PENDIENTES':
             if chatId == self.config.CHAT_ID_SOPORTE:
                 respuesta = self.config.TITULO_APP + \
                     "LISTADO DE USUARIOS PENDIENTES DE AUTORIZACIÓN: \n\n" + \
                     self.usuario.listadoUsuariosPendientes()+self.config.EMAIL_SOPORTE
                 self.metodos.sendMessage(
                     self.config.CHAT_ID_SOPORTE, respuesta)
-        elif text == '/LISTADO_USUARIOS_AUTORIZADOS':
+        elif text == 'LISTADO_USUARIOS_AUTORIZADOS':
             if chatId == self.config.CHAT_ID_SOPORTE:
                 respuesta = self.config.TITULO_APP + \
                     "LISTADO DE USUARIOS AUTORIZADOS: \n\n" + \

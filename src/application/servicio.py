@@ -46,11 +46,14 @@ class Servicio():
         if self.data != []:
             # Recorro el json
             for dato in self.data:
-                # Obtengo los parametros del mensaje
-                chatId = str(dato['message']['chat']['id'])
-                first_name = str(dato['message']['chat']['first_name'])
-                # date = dato['message']['date']
-                text = str(dato['message']['text'])
+                try:
+                    # Obtengo los parametros del mensaje
+                    chatId = str(dato['message']['chat']['id'])
+                    first_name = str(dato['message']['chat']['first_name'])
+                    # date = dato['message']['date']
+                    text = str(dato['message']['text'])
+                except Exception:
+                    print("Error: "+Exception)
                 # Envio respuesta
                 # Primero compruebo el estado del servicio y el usuario
                 estadoActual = self.estado.comprobarEstado()
@@ -67,7 +70,7 @@ class Servicio():
                     # Si esta fuera de servicio y el usuario no es el admin se lo comunico
                     if (estadoActual == 0 and chatId != self.chatIdSoporte):
                         notas = self.estado.obtenerNotasEstado()
-                        text = self.tituloApp+"El sistema está fuera de servicio en este momento por:\n\n" + \
+                        text = self.tituloApp+"El sistema está fuera de servicio en este momento:\n\n" + \
                             notas+"\n\nPor favor, pruebe de nuevo más tarde."+self.emailSoporte
                         self.metodos.sendMessage(chatId, text)
                     # Si no esta fuera de servicio o es el admin...
@@ -85,8 +88,8 @@ class Servicio():
                                     text = self.tituloApp+"Solicitud de acceso del Usuario: \n\n" + \
                                         first_name+" - ("+chatId+")" + \
                                         self.emailSoporte
-                                    self.metodos.sendKeyboard(
-                                        self.chatIdSoporte, self.opciones.enviarOpcionesSolicitud(chatId, first_name))
+                                    # self.metodos.sendKeyboard(
+                                    #     self.chatIdSoporte, self.opciones.enviarOpcionesSolicitud(chatId, first_name))
                                     # Al usuario le comunicamos que ha enviado correctamente una solicitud de acceso
                                     # Actualizamos su estado de solicitud a pendiente
                                     self.usuario.solicitudUsuario(chatId)
@@ -105,8 +108,8 @@ class Servicio():
                                         self.emailSoporte
                                     self.metodos.sendMessage(
                                         self.chatIdSoporte, text)
-                                    self.metodos.sendKeyboard(
-                                        self.chatIdSoporte, self.opciones.enviarOpcionesSolicitud(chatId, first_name))
+                                    # self.metodos.sendKeyboard(
+                                    #     self.chatIdSoporte, self.opciones.enviarOpcionesSolicitud(chatId, first_name))
                             # Si no es autorizado..
                             else:
                                 text = self.tituloApp+"Lo sentimos "+first_name + \
