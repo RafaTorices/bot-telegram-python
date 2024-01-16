@@ -71,6 +71,19 @@ class Usuario():
         self.resultado = self.cursor.fetchall()
         return self.resultado
 
+    def listadoUsuariosPendientesWeb(self):
+        self.cursor = self.conexion.cursor()
+        self.sql = "SELECT id, chatid, first_name FROM usuarios WHERE pendiente = 1 ORDER BY id DESC"
+        self.cursor.execute(self.sql)
+        self.resultado = self.cursor.fetchall()
+        return self.resultado
+
+    def activarUsuario(self, id):
+        self.cursor = self.conexion.cursor()
+        self.sql = "UPDATE usuarios SET autorizado = 1, pendiente = 0 WHERE id = "+id
+        self.cursor.execute(self.sql)
+        self.conexion.commit()
+
     def listadoUsuariosPendientes(self):
         self.cursor = self.conexion.cursor()
         self.sql = "SELECT CONCAT (id, '-', chatid, '-',first_name) AS usuario FROM usuarios WHERE pendiente = 1 ORDER BY id DESC"
