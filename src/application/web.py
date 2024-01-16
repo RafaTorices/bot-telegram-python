@@ -21,19 +21,22 @@ def listado_usuarios():
     return render_template('listado_usuarios.html', usuarios=usuarios)
 
 
-def listado_usuarios_pendientes():
-    usuarios = Usuario()
-    usuarios = usuarios.listadoUsuariosPendientesWeb()
-    return render_template('listado_usuarios_pendientes.html', usuarios=usuarios)
-
-
 def activar_usuario():
     if request.method == 'POST':
         id = request.form['id']
         usuario = Usuario()
-        usuario.activarUsuario(id)
-        usuarios = usuario.listadoUsuariosPendientesWeb()
-        return render_template('listado_usuarios_pendientes.html', usuarios=usuarios)
+        usuario.activarUsuarioWeb(id)
+        usuarios = usuario.listadoUsuariosWeb()
+        return render_template('listado_usuarios.html', usuarios=usuarios)
+
+
+def desactivar_usuario():
+    if request.method == 'POST':
+        id = request.form['id']
+        usuario = Usuario()
+        usuario.desactivarUsuarioWeb(id)
+        usuarios = usuario.listadoUsuariosWeb()
+        return render_template('listado_usuarios.html', usuarios=usuarios)
 
 
 def estado_servicio():
