@@ -3,6 +3,7 @@ from flask import render_template, request
 from application.usuarios import Usuario
 from application.config import TelegramConfig
 from application.estado import Estado
+from application.opciones import Opciones
 
 
 def getWebhookInfo():
@@ -19,6 +20,12 @@ def listado_usuarios():
     usuarios = Usuario()
     usuarios = usuarios.listadoUsuariosWeb()
     return render_template('listado_usuarios.html', usuarios=usuarios)
+
+
+def listado_opciones():
+    opciones = Opciones()
+    opciones = opciones.enviarOpcionesWeb()
+    return render_template('listado_opciones.html', opciones=opciones)
 
 
 def activar_usuario(id):

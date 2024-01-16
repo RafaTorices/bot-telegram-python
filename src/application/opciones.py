@@ -26,6 +26,13 @@ class Opciones():
         }
         return keyboard
 
+    def enviarOpcionesWeb(self):
+        self.cursor = self.conexion.cursor()
+        self.sql = "SELECT id, opcion, texto FROM opciones"
+        self.cursor.execute(self.sql)
+        self.resultado = self.cursor.fetchall()
+        return self.resultado
+
     # def enviarOpcionesSolicitud(self, chatId, first_name):
     #     opciones = [["ACTIVAR_"+first_name +
     #                  "("+chatId+")", "CANCELAR_"+first_name+"("+chatId+")"]]
