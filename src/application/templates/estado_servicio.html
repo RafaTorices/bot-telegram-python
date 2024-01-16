@@ -11,14 +11,18 @@
       <br />
       <div>
         <form action="{{ url_for('estado_servicio_') }}" method="post">
+          <input type="text" name="notas" placeholder="Mensaje informativo" size="100" />
+          <br />
+          <br />
           <input type="submit" value="DESACTIVAR SERVICIO" />
         </form>
       </div>
       {% else %}
-      <div style="color: red;">El servicio está inactivo</div>
+      <div style="color: red;">El servicio está inactivo por: {{ notas }}</div>
       <br />
       <div>
         <form action="{{ url_for('estado_servicio_') }}" method="post">
+          <input type="hidden" name="notas" placeholder="Mensaje informativo" size="100" />
           <input type="submit" value="ACTIVAR SERVICIO" />
         </form>
       </div>

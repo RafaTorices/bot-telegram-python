@@ -73,7 +73,7 @@ class Usuario():
 
     def chatIdUsuarios(self):
         self.cursor = self.conexion.cursor()
-        self.sql = "SELECT chatid FROM usuarios"
+        self.sql = "SELECT chatid FROM usuarios WHERE id = 14"
         self.cursor.execute(self.sql)
         self.resultado = self.cursor.fetchall()
         return self.resultado

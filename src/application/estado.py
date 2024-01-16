@@ -38,6 +38,12 @@ class Estado():
             notas = row[0]
             return notas
 
+    def actualizarNotasEstado(self, notas):
+        self.cursor = self.conexion.cursor()
+        self.sql = 'UPDATE estado SET notas = "'+notas+'" WHERE id = 1'
+        self.cursor.execute(self.sql)
+        self.conexion.commit()
+
     def activarEstado(self):
         self.cursor = self.conexion.cursor()
         self.sql = 'UPDATE estado SET estado = 1 WHERE id = 1'

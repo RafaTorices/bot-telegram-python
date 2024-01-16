@@ -69,8 +69,9 @@ def estado_servicio():
     estado = Estado()
     usuarios = Usuario()
     if request.method == 'GET':
+        notas = estado.obtenerNotasEstado()
         result = estado.comprobarEstado()
-        return render_template('estado_servicio.html', estado=result)
+        return render_template('estado_servicio.html', notas=notas, estado=result)
     if request.method == 'POST':
         result = estado.comprobarEstado()
         if result == 0:
@@ -83,11 +84,14 @@ def estado_servicio():
                     chatId, "El servicio ha sido activado. Ya puedes utilizar el Bot.")
             return render_template('estado_servicio.html', estado=result)
         else:
+            nuevasNotas = request.form['notas']
+            estado.actualizarNotasEstado(nuevasNotas)
+            notas = estado.obtenerNotasEstado()
             estado.desactivarEstado()
             result = estado.comprobarEstado()
             for row in usuarios.chatIdUsuarios():
                 chatId = row[0]
                 metodos = MetodosTelegram()
                 metodos.sendMessage(
-                    chatId, "El servicio ha sido desactivado por tareas de mantenimiento. Disculpa las molestias.")
-            return render_template('estado_servicio.html', estado=result)
+                    chatId, "El servicio ha sido desactivado por: \n\n" + notas + "\n\nDisculpa las molestias.")
+            return render_template('estado_servicio.html', estado=result, notas=notas)
