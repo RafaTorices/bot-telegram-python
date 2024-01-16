@@ -2,7 +2,8 @@
 from flask import Flask, request, render_template, url_for
 from application.servicio import Servicio
 from application.web import getWebhookInfo, listado_usuarios, \
-    estado_servicio, activar_usuario, desactivar_usuario, listado_opciones
+    estado_servicio, activar_usuario, desactivar_usuario, \
+    listado_opciones, editar_opcion
 
 app = Flask(__name__, template_folder='application/templates',
             static_folder='application/static')
@@ -33,6 +34,11 @@ def listado_usuarios_():
 @app.route('/listado_opciones', methods=['GET'])
 def listado_opciones_():
     return listado_opciones()
+
+
+@app.route('/editar_opcion', methods=['POST'])
+def editar_opcion_():
+    return editar_opcion(id)
 
 
 @app.route('/activar_usuario', methods=['POST'])

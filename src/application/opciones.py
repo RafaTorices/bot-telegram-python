@@ -26,6 +26,13 @@ class Opciones():
         }
         return keyboard
 
+    def editarOpcion(self, id, opcion, texto):
+        self.cursor = self.conexion.cursor()
+        self.sql = "UPDATE opciones SET opcion = %s, texto = %s WHERE id = %s"
+        datosOpcion = (opcion, texto, id)
+        self.cursor.execute(self.sql, datosOpcion)
+        self.conexion.commit()
+
     def enviarOpcionesWeb(self):
         self.cursor = self.conexion.cursor()
         self.sql = "SELECT id, opcion, texto FROM opciones"

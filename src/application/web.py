@@ -28,6 +28,18 @@ def listado_opciones():
     return render_template('listado_opciones.html', opciones=opciones)
 
 
+def editar_opcion(id):
+    if request.method == 'POST':
+        id = request.form['id']
+        opcion = request.form['opcion']
+        texto = request.form['texto']
+        opciones = Opciones()
+        opciones.editarOpcion(id, opcion, texto)
+        opciones = opciones.enviarOpcionesWeb()
+        mensaje = opcion+" editada correctamente."
+        return render_template('listado_opciones.html', opciones=opciones, mensaje=mensaje)
+
+
 def activar_usuario(id):
     if request.method == 'POST':
         id = request.form['id']

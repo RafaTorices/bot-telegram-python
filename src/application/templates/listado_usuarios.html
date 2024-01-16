@@ -8,8 +8,8 @@
     <table border="1">
       <thead>
         <tr>
-          <th>FIRST_NAME</th>
           <th>CHAT_ID</th>
+          <th>FIRST_NAME</th>
           <th>ESTADO</th>
           <th></th>
         </tr>
@@ -18,31 +18,28 @@
         {% if usuarios %}
         {% for usuario in usuarios %}
         <tr>
-          <td>
-            {{ usuario[2] }}
-          </td>
-          <td>
-            {{ usuario[1] }}
-          </td>
-          <td>
-            {% if (usuario[3] == 1) and (usuario[4] == 0) %}
-            <div style="color: green;">ACTIVO</div>
-            {% else %}
-            <div style="color: red;">INACTIVO</div>
-            {% endif %}
-          </td>
-          <td>
-            {% if (usuario[3] == 0) and (usuario[4] == 1) %}
-            <form action="{{ url_for('activar_usuario_') }}" method="post">
-              <input type="text" name="id" value="{{ usuario[0] }}">
-              <input type="submit" value="Activar">
-            </form>
-            {% else %}
-            <form action="{{ url_for('desactivar_usuario_') }}" method="post">
-              <input type="text" name="id" value="{{ usuario[0] }}">
-              <input type="submit" value="Desactivar">
+          <form action="" method="post">
+            <td>
+              <div>{{ usuario[1] }}</div>
+            </td>
+            <td>
+              <div>{{ usuario[2] }}</div>
+            </td>
+            <td>
+              {% if (usuario[3] == 1) and (usuario[4] == 0) %}
+              <div style="color: greenyellow;">Activo</div>
+              {% else %}
+              <div style="color: red;">Inactivo</div>
               {% endif %}
-          </td>
+            </td>
+            <td>
+              {% if (usuario[3] == 1) and (usuario[4] == 0) %}
+              <input type="submit" value="Desactivar">
+              {% else %}
+              <input type="submit" value="Activar">
+              {% endif %}
+            </td>
+          </form>
         </tr>
         {% endfor %}
       </tbody>

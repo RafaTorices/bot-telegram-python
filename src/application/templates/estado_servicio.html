@@ -7,7 +7,7 @@
     <h2>Estado del Servicio</h2>
     <div>
       {% if estado == 1 %}
-      <div style="color: aqua;">El servicio está activo</div>
+      <div style="color:greenyellow;">El servicio está activo</div>
       <br />
       <div>
         <form action="{{ url_for('estado_servicio_') }}" method="post">
