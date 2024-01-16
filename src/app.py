@@ -1,13 +1,15 @@
 
 from flask import Flask, request, render_template
+import requests
 from application.servicio import Servicio
 from application.usuarios import Usuario
 
-app = Flask(__name__, template_folder='application/templates')
+app = Flask(__name__, template_folder='application/templates',
+            static_folder='application/static')
 
 
 @app.route('/', methods=['POST', 'GET'])
-def __init__():
+def index():
     # Compruebo si es un POST
     if request.method == 'POST':
         # Llamo a la clase que inicia el servicio
@@ -16,14 +18,21 @@ def __init__():
 
     # Si es una peticion GET le devuelvo la home html
     if request.method == 'GET':
+        # apiURL = "https://api.telegram.org/bot6407826451:AAEu6Tx2BVpht8BvA-yDtYzwip3aKRPsYP4/getWebhookInfo"
+        # response = requests.get(apiURL)
+        # if response.status_code == 200:
+        #     data = response.json()
+        #     return render_template('home.html', data=data)
+        # else:
+        #     return render_template('home.html', error="Error: "+response)
         return render_template('home.html')
 
 
 @app.route('/listado_usuarios', methods=['GET'])
-def list_users():
+def listado_users():
     usuarios = Usuario()
-    misusuarios = usuarios.listadoUsuarios()
-    return render_template('listado_usuarios.html', usuarios=misusuarios)
+    usuarios = usuarios.listadoUsuarios()
+    return render_template('listado_usuarios.html', usuarios=usuarios)
 
 
 if __name__ == "__main__":
