@@ -71,6 +71,13 @@ class Usuario():
         self.resultado = self.cursor.fetchall()
         return self.resultado
 
+    def chatIdUsuarios(self):
+        self.cursor = self.conexion.cursor()
+        self.sql = "SELECT chatid FROM usuarios"
+        self.cursor.execute(self.sql)
+        self.resultado = self.cursor.fetchall()
+        return self.resultado
+
     def activarUsuarioWeb(self, id):
         self.cursor = self.conexion.cursor()
         self.sql = "UPDATE usuarios SET autorizado = 1, pendiente = 0 WHERE id = "+id

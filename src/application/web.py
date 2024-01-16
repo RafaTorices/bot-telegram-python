@@ -67,6 +67,7 @@ def activar_desactivar_usuario(id, first_name, chatId, estado):
 
 def estado_servicio():
     estado = Estado()
+    usuarios = Usuario()
     if request.method == 'GET':
         result = estado.comprobarEstado()
         return render_template('estado_servicio.html', estado=result)
@@ -75,8 +76,18 @@ def estado_servicio():
         if result == 0:
             estado.activarEstado()
             result = estado.comprobarEstado()
+            for row in usuarios.chatIdUsuarios():
+                chatId = row[0]
+                metodos = MetodosTelegram()
+                metodos.sendMessage(
+                    chatId, "El servicio ha sido activado. Ya puedes utilizar el Bot.")
             return render_template('estado_servicio.html', estado=result)
         else:
             estado.desactivarEstado()
             result = estado.comprobarEstado()
+            for row in usuarios.chatIdUsuarios():
+                chatId = row[0]
+                metodos = MetodosTelegram()
+                metodos.sendMessage(
+                    chatId, "El servicio ha sido desactivado por tareas de mantenimiento. Disculpa las molestias.")
             return render_template('estado_servicio.html', estado=result)
