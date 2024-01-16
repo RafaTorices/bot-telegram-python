@@ -20,10 +20,10 @@
           <form action="{{ url_for('editar_opcion_') }}" method="post">
             <td>
               <input type="hidden" name="id" value="{{ opcion[0] }}">
-              <input type="text" name="opcion" value="{{ opcion[1] }}">
+              <input type="text" name="opcion" value="{{ opcion[1] }}" required>
             </td>
             <td>
-              <input type="text" name="texto" value="{{ opcion[2] }}" size="100">
+              <input type="text" name="texto" value="{{ opcion[2] }}" size="100" required>
             </td>
             <td>
               <input type="submit" value="Actualizar">

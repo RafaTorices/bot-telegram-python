@@ -14,6 +14,7 @@ class Respuesta():
         self.usuario = Usuario()
 
     def enviarRespuesta(self, chatId, text, first_name):
+        opciones = self.opciones.obtenerOpciones()
         if text == '/OPCIONES' or text == '/opciones':
             respuesta = self.config.TITULO_APP + \
                 "Tu respuesta es "+text+self.config.EMAIL_SOPORTE
@@ -51,30 +52,26 @@ class Respuesta():
                     self.usuario.listadoUsuariosAutorizados()+self.config.EMAIL_SOPORTE
                 self.metodos.sendMessage(
                     self.config.CHAT_ID_SOPORTE, respuesta)
-        elif text == '1':
-            respuesta = self.config.TITULO_APP + \
-                "Eres el number one !! \n\n"
+        elif text == opciones[0][0]:
+            respuesta = self.config.TITULO_APP + opciones[0][1] + "\n"
             self.metodos.sendMessage(
                 chatId, respuesta)
-        elif text == '2':
-            respuesta = self.config.TITULO_APP + \
-                "Eres el number two !! \n\n"
+        elif text == opciones[1][0]:
+            respuesta = self.config.TITULO_APP + opciones[1][1] + "\n"
             self.metodos.sendMessage(
                 chatId, respuesta)
-        elif text == '3':
-            respuesta = self.config.TITULO_APP + \
-                "Eres el number three !! \n\n"
+        elif text == opciones[2][0]:
+            respuesta = self.config.TITULO_APP + opciones[2][1] + "\n"
             self.metodos.sendMessage(
                 chatId, respuesta)
-        elif text == '4':
-            respuesta = self.config.TITULO_APP + \
-                "Eres el number four !! \n\n"
+        elif text == opciones[3][0]:
+            respuesta = self.config.TITULO_APP + opciones[3][1] + "\n"
             self.metodos.sendMessage(
                 chatId, respuesta)
         else:
             respuesta = self.config.TITULO_APP + \
                 "Lo siento "+first_name + \
-                ", pero no entiendo lo que me dices !!\n\nPrueba con una de mis /OPCIONES" + \
+                ", pero no entiendo lo que me dices !! ("+text+")\n\nPrueba con una de mis /OPCIONES" + \
                 self.config.EMAIL_SOPORTE
             self.metodos.sendMessage(chatId, respuesta)
             keyboard = self.opciones.enviarOpciones()
