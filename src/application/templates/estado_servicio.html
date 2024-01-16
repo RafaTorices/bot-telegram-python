@@ -1,35 +1,27 @@
-<body>
+{% extends "home.html" %}
+{% block content %}
+<h2>Estado del Servicio</h2>
+<div>
+  {% if estado == 1 %}
+  <div style="color:greenyellow;">El servicio está activo</div>
+  <br />
   <div>
-    {% extends "home.html" %}
+    <form action="{{ url_for('estado_servicio_') }}" method="post">
+      <input type="text" name="notas" placeholder="Mensaje informativo" size="50" required />
+      <br />
+      <br />
+      <button type="submit">DESACTIVAR SERVICIO</button>
+    </form>
   </div>
+  {% else %}
+  <div style="color: red;">El servicio está inactivo por: {{ notas }}</div>
+  <br />
   <div>
-    {% block content %}
-    <h2>Estado del Servicio</h2>
-    <div>
-      {% if estado == 1 %}
-      <div style="color:greenyellow;">El servicio está activo</div>
-      <br />
-      <div>
-        <form action="{{ url_for('estado_servicio_') }}" method="post">
-          <input type="text" name="notas" placeholder="Mensaje informativo" size="100" required />
-          <br />
-          <br />
-          <input type="submit" value="DESACTIVAR SERVICIO" />
-        </form>
-      </div>
-      {% else %}
-      <div style="color: red;">El servicio está inactivo por: {{ notas }}</div>
-      <br />
-      <div>
-        <form action="{{ url_for('estado_servicio_') }}" method="post">
-          <input type="hidden" name="notas" placeholder="Mensaje informativo" size="100" />
-          <input type="submit" value="ACTIVAR SERVICIO" />
-        </form>
-      </div>
-      {% endif %}
-    </div>
-    {% endblock %}
+    <form action="{{ url_for('estado_servicio_') }}" method="post">
+      <input type="hidden" name="notas" placeholder="Mensaje informativo" size="50" />
+      <button type="submit">ACTIVAR SERVICIO</button>
+    </form>
   </div>
-</body>
-
-</html>
+  {% endif %}
+</div>
+{% endblock %}

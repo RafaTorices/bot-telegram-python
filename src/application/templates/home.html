@@ -12,11 +12,13 @@
 
 <body>
   <div>
-    <p>
+    <h1>
       TELEGRAM BOT
-      <br />
-      by Keep-DevOps-Triangel
-    </p>
+      <br>
+      <span>
+        by Keep-DevOps-Triangel
+      </span>
+    </h1>
     <nav>
       <ul>
         <li><a href="{{ url_for('index') }}">Home</a></li>
@@ -26,11 +28,11 @@
         <li><a href="{{ url_for('estado_servicio_') }}">Estado del Servicio</a></li>
       </ul>
     </nav>
-    <div>
+    <p>
       {% block content %}
-      <h2>Home Page</h2>
-      {% endblock %}
-    </div>
+    <h2>Home Page</h2>
+    {% endblock %}
+    </p>
   </div>
 </body>
 
