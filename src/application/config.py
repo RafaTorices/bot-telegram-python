@@ -17,8 +17,8 @@ class TelegramConfig():
 
 
 class MySQLConfig():
-    DB_HOST = "172.17.0.3"
-    DB_USER = "devops"
-    DB_PASSWORD = "devops"
-    DB_NAME = "devops"
-    DB_PORT = 3306
+    DB_HOST = os.getenv('DB_HOST')
+    DB_USER = os.getenv('DB_USER')
+    DB_PASSWORD = os.getenv('DB_PASSWORD')
+    DB_NAME = os.getenv('DB_NAME')
+    DB_PORT = os.getenv('DB_PORT')
