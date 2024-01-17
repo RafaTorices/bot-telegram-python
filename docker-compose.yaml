@@ -4,7 +4,7 @@ services:
     image: mysql:latest
     container_name: app-bot-mysql
     env_file:
-      - ./docker-compose.env
+      - ./.env
     volumes:
       - ./config/mysql:/docker-entrypoint-initdb.d
       - dbtelegram:/var/lib/mysql
@@ -16,7 +16,7 @@ services:
       dockerfile: Dockerfile
     container_name: app-bot-telegram
     env_file:
-      - ./docker-compose.env
+      - ./.env
     ports:
       - "5000:5000"
 
