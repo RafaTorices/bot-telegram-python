@@ -5,6 +5,13 @@ from application.config import TelegramConfig
 from application.estado import Estado
 from application.opciones import Opciones
 from application.metodos import MetodosTelegram
+from application.servicio import Servicio
+
+
+def webhook():
+    if request.method == 'POST':
+        Servicio(request.json)
+        return render_template('home.html')
 
 
 def getWebhookInfo():
