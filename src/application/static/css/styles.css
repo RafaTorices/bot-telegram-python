@@ -7,7 +7,7 @@ body {
     background-color: #000;
     color: #fff;
     font-family: 'Kanit-Regular';
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 1.5;
 }
 
@@ -23,7 +23,7 @@ span {
 button {
     display: inline-block;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1.5;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -54,7 +54,7 @@ input {
     box-sizing: border-box;
     border: 1px solid blue;
     border-radius: 4px;
-    font-size: x-large;
+    font-size: 1rem;
     transition: border-color 0.3s;
     font-family: Kanit-Regular;
 }
@@ -62,7 +62,7 @@ input {
 input:disabled {
     background-color: black;
     color: white;
-    font-size: x-large;
+    font-size: 1rem;
     border-style: none;
     font-variant: small-caps;
 }
@@ -131,6 +131,7 @@ div {
     padding: 10px;
     margin-top: 2%;
     margin-bottom: 2%;
+    font-size: 1rem;
 }
 
 table {
@@ -141,6 +142,7 @@ table {
     border-radius: 20px;
     border-style: solid;
     border-width: 2px;
+    font-size: 1rem;
 }
 
 td {
