@@ -8,7 +8,7 @@ load_dotenv()
 class TelegramConfig():
     APIURL = 'https://api.telegram.org/bot'
     TOKEN = os.getenv('TOKEN')
-    TITULO_APP = os.getenv('TITULO_APP')
+    TITULO_APP = os.getenv('TITULO_APP')+"\n\n"
     TELEFONO_SOPORTE = os.getenv('TELEFONO_SOPORTE')
     CHAT_ID_SOPORTE = os.getenv('CHAT_ID_SOPORTE')
     EMAIL_SOPORTE = os.getenv('EMAIL_SOPORTE')
