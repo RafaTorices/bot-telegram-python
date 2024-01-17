@@ -12,6 +12,8 @@ def webhook():
     if request.method == 'POST':
         Servicio(request.json)
         return render_template('home.html')
+    if request.method == 'GET':
+        return render_template('home.html')
 
 
 def getWebhookInfo():

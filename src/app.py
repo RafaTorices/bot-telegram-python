@@ -13,7 +13,12 @@ def index():
     return render_template('home.html')
 
 
-@app.route('/webhook', methods=['POST'])
+@app.errorhandler(404)
+def error404_(error):
+    return render_template('404.html')
+
+
+@app.route('/webhook', methods=['GET', 'POST'])
 def webhook_():
     return webhook()
 
