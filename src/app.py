@@ -4,6 +4,7 @@ from application.web import webhook, getWebhookInfo, listado_usuarios, \
     estado_servicio, activar_desactivar_usuario, \
     listado_opciones, editar_opcion, enviar_mensajes , listado_mensajes \
     , deleteWebhook, setWebhook
+from application.config import TelegramConfig
 
 load_dotenv()
 
@@ -13,12 +14,14 @@ app = Flask(__name__, template_folder='application/templates',
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('home.html')
+    titulo = TelegramConfig.TITULO_APP
+    return render_template('home.html', titulo=titulo)
 
 
 @app.errorhandler(404)
 def error404_(error):
-    return render_template('404.html')
+    titulo = TelegramConfig.TITULO_APP
+    return render_template('404.html', titulo=titulo)
 
 
 @app.route('/webhook', methods=['GET', 'POST'])

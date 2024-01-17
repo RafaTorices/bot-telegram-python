@@ -13,7 +13,8 @@ def webhook():
         Servicio(request.json)
         return render_template('home.html')
     if request.method == 'GET':
-        return render_template('home.html')
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('home.html', titulo=titulo)
 
 
 def getWebhookInfo():
@@ -21,7 +22,8 @@ def getWebhookInfo():
     response = requests.get(apiURL)
     if response.status_code == 200:
         data = response.json()
-        return render_template('get_webhook_info.html', data=data)
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('get_webhook_info.html', data=data, titulo=titulo)
     else:
         return render_template('get_webhook_info.html', error="Error: "+response)
     
@@ -30,7 +32,8 @@ def deleteWebhook():
     response = requests.get(apiURL)
     if response.status_code == 200:
         respuesta = response.json()
-        return render_template('home.html', respuesta=respuesta)
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('home.html', respuesta=respuesta, titulo=titulo)
     else:
         return render_template('get_webhook_info.html', error="Error: "+response)
     
@@ -40,7 +43,8 @@ def setWebhook():
     response = requests.post(apiURL)
     if response.status_code == 200:
         respuesta = response.json()
-        return render_template('home.html', respuesta=respuesta)
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('home.html', respuesta=respuesta, titulo=titulo)
     else:
         return render_template('get_webhook_info.html', error="Error: "+response)
 
@@ -48,13 +52,15 @@ def setWebhook():
 def listado_usuarios():
     usuarios = Usuario()
     usuarios = usuarios.listadoUsuariosWeb()
-    return render_template('listado_usuarios.html', usuarios=usuarios)
+    titulo = TelegramConfig.TITULO_APP
+    return render_template('listado_usuarios.html', usuarios=usuarios, titulo=titulo)
 
 
 def listado_opciones():
     opciones = Opciones()
     opciones = opciones.enviarOpcionesWeb()
-    return render_template('listado_opciones.html', opciones=opciones)
+    titulo = TelegramConfig.TITULO_APP
+    return render_template('listado_opciones.html', opciones=opciones, titulo=titulo)
 
 
 def editar_opcion(id):
@@ -66,7 +72,8 @@ def editar_opcion(id):
         opciones.editarOpcion(id, opcion, texto)
         opciones = opciones.enviarOpcionesWeb()
         mensaje = opcion+" editada correctamente."
-        return render_template('listado_opciones.html', opciones=opciones, mensaje=mensaje)
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('listado_opciones.html', opciones=opciones, mensaje=mensaje, titulo=titulo)
 
 
 def activar_desactivar_usuario(id, first_name, chatId, estado):
@@ -90,7 +97,8 @@ def activar_desactivar_usuario(id, first_name, chatId, estado):
             metodos.sendMessage(
                 chatId, "Hola "+first_name+", tu usuario ha sido activado. Ya puedes utilizar el Bot.")
         usuarios = usuario.listadoUsuariosWeb()
-        return render_template('listado_usuarios.html', usuarios=usuarios, mensaje=mensaje)
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('listado_usuarios.html', usuarios=usuarios, mensaje=mensaje, titulo=titulo)
 
 
 def estado_servicio():
@@ -99,7 +107,8 @@ def estado_servicio():
     if request.method == 'GET':
         notas = estado.obtenerNotasEstado()
         result = estado.comprobarEstado()
-        return render_template('estado_servicio.html', notas=notas, estado=result)
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('estado_servicio.html', notas=notas, estado=result, titulo=titulo)
     if request.method == 'POST':
         result = estado.comprobarEstado()
         if result == 0:
@@ -128,7 +137,8 @@ def enviar_mensajes():
     if request.method == 'GET':
         usuarios = Usuario()
         usuarios = usuarios.listadoUsuariosWeb()
-        return render_template('enviar_mensajes.html', usuarios=usuarios)
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('enviar_mensajes.html', usuarios=usuarios, titulo=titulo)
     if request.method == 'POST':
         config = TelegramConfig()
         titulo = config.TITULO_APP 
@@ -138,9 +148,11 @@ def enviar_mensajes():
         metodos.sendMessage(chatId, mensaje)
         usuarios = Usuario()
         usuarios = usuarios.listadoUsuariosWeb()
-        return render_template('enviar_mensajes.html', mensaje="Mensaje enviado correctamente.", usuarios=usuarios)
+        titulo = TelegramConfig.TITULO_APP
+        return render_template('enviar_mensajes.html', mensaje="Mensaje enviado correctamente.", usuarios=usuarios, titulo=titulo)
     
 def listado_mensajes():
     mensajes = Usuario()
     mensajes = mensajes.listadoMensajesWeb()
-    return render_template('listado_mensajes.html', mensajes=mensajes)
+    titulo = TelegramConfig.TITULO_APP
+    return render_template('listado_mensajes.html', mensajes=mensajes, titulo=titulo)

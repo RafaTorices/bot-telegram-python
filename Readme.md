@@ -33,6 +33,8 @@ La aplicación crea un Bot de Telegram que permite interactuar con el usuario qu
 >   - **MYSQL_PASSWORD**: Contraseña del usuario de la base de datos MySQL (OBLIGATORIO)
 >   - **MYSQL_HOST**: Host de la base de datos MySQL (OBLIGATORIO)
 >   - **MYSQL_PORT**: Puerto de la base de datos MySQL (OBLIGATORIO)
+>
+> ### **NOTA:** se incluye el fichero env_example para facilitar la configuración de las variables de entorno. Cumplimentar con los valores necesarios y renombrar a **.env**.
 > ------
 
 1. Clonar el repositorio en local:
@@ -44,7 +46,7 @@ git clone
 2. Crear el fichero .env en la raíz del proyecto con las variables de entorno necesarias para el despliegue de la aplicación:
 
 ```bash
-./docker-compose.env
+.env
 ```
 
 3. Levantar Docker-Compose:
@@ -52,4 +54,12 @@ git clone
 ```bash
 docker-compose up -d
 ```
+
+4. Acceder a la aplicación web Python Flask en el navegador:
+
+```bash
+http://localhost:5000
+```
+
+![Alt text](image.png)
 
