@@ -115,3 +115,17 @@ class Usuario():
             listadoUsuarios.append(usuario)
         usuarios = '\n'.join(listadoUsuarios)
         return usuarios
+
+    def guardarMensajeUsuario(self, chatId, first_name, text, username):
+        self.cursor = self.conexion.cursor()
+        self.sql = "INSERT INTO mensajes (chatId, first_name, mensaje, username) VALUES ( %s, %s, %s, %s)"
+        datosMensaje = (chatId, first_name, text, username)
+        self.cursor.execute(self.sql, datosMensaje)
+        self.conexion.commit()
+        
+    def listadoMensajesWeb(self):
+        self.cursor = self.conexion.cursor()
+        self.sql = "SELECT updated, first_name, username, mensaje FROM mensajes ORDER BY updated DESC"
+        self.cursor.execute(self.sql)
+        self.resultado = self.cursor.fetchall()
+        return self.resultado

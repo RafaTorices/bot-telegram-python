@@ -64,6 +64,18 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 -- Volcando datos para la tabla devops.usuarios: ~0 rows (aproximadamente)
 
+-- Volcando estructura para tabla devops.mensajes
+CREATE TABLE IF NOT EXISTS `mensajes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `updated` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `first_name` varchar(150) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `chatid` varchar(20) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `username` varchar(150) COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  `mensaje` text COLLATE utf8mb3_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+
+
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

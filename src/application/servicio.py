@@ -53,6 +53,8 @@ class Servicio():
                     username = str(dato['message']['chat']['username'])
                     # date = dato['message']['date']
                     text = str(dato['message']['text'])
+                    # Inserto el mensaje en la BD
+                    self.usuario.guardarMensajeUsuario(chatId, first_name, text, username)
                 except Exception:
                     print("Error: "+Exception)
                 # Envio respuesta

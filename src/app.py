@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from flask import Flask, request, render_template, url_for
 from application.web import webhook, getWebhookInfo, listado_usuarios, \
     estado_servicio, activar_desactivar_usuario, \
-    listado_opciones, editar_opcion, enviar_mensajes
+    listado_opciones, editar_opcion, enviar_mensajes , listado_mensajes
 
 load_dotenv()
 
@@ -62,6 +62,9 @@ def estado_servicio_():
 def enviar_mensajes_():
     return enviar_mensajes()
 
+@app.route('/listado_mensajes', methods=['GET'])
+def listado_mensajes_():
+    return listado_mensajes()
 
 if __name__ == "__main__":
     with app.test_request_context():
@@ -73,4 +76,5 @@ if __name__ == "__main__":
         activardesactivarusuario = url_for('activar_desactivar_usuario_')
         listadoopciones = url_for('listado_opciones_')
         enviarmensajes = url_for('enviar_mensajes_')
+        listadomensajes = url_for('listado_mensajes_')
     app.run()

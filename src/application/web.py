@@ -120,3 +120,8 @@ def enviar_mensajes():
         usuarios = Usuario()
         usuarios = usuarios.listadoUsuariosWeb()
         return render_template('enviar_mensajes.html', mensaje="Mensaje enviado correctamente.", usuarios=usuarios)
+    
+def listado_mensajes():
+    mensajes = Usuario()
+    mensajes = mensajes.listadoMensajesWeb()
+    return render_template('listado_mensajes.html', mensajes=mensajes)

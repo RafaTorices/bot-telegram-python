@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+{% block content %}
+<h2>Listado de Mensajes Recibidos</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>FECHA/HORA</th>
+      <th>FIRST_NAME</th>
+      <th>MENSAJE RECIBIDO</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if mensajes %}
+    {% for mensaje in mensajes %}
+    <tr>
+      <td>
+        <p>{{ mensaje[0] }}</p>
+      </td>
+      <td>
+        <p>{{ mensaje[1] }}</p>
+      </td>
+      <td>
+        <p>{{ mensaje[3] }}</p>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  {% else %}
+  <div>No hay mensajes</div>
+  {% endif %}
+</table>
+{% endblock %}
