@@ -5,14 +5,14 @@ WORKDIR /src
 # Copy files for app
 COPY src .
 COPY requirements.txt .
-# Instal and update pip
+# Install and update pip and install python-dotenv
+# for use .env file
 RUN python -m pip install --upgrade pip && \
     pip install python-dotenv
 # Install requirements for app
 RUN pip install -r requirements.txt
 # Expose port for flask app
 EXPOSE 5000
-# Set environment variables
 # main file for flask app
 ENV FLASK_APP=app.py
 # Run flask app
