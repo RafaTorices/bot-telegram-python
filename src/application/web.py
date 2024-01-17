@@ -104,3 +104,19 @@ def estado_servicio():
                 metodos.sendMessage(
                     chatId, "El servicio ha sido desactivado por: \n\n" + notas + "\n\nDisculpa las molestias.")
             return render_template('estado_servicio.html', estado=result, notas=notas)
+
+def enviar_mensajes():
+    if request.method == 'GET':
+        usuarios = Usuario()
+        usuarios = usuarios.listadoUsuariosWeb()
+        return render_template('enviar_mensajes.html', usuarios=usuarios)
+    if request.method == 'POST':
+        config = TelegramConfig()
+        titulo = config.TITULO_APP 
+        chatId = request.form['chatId']
+        mensaje = titulo + request.form['mensaje']
+        metodos = MetodosTelegram()
+        metodos.sendMessage(chatId, mensaje)
+        usuarios = Usuario()
+        usuarios = usuarios.listadoUsuariosWeb()
+        return render_template('enviar_mensajes.html', mensaje="Mensaje enviado correctamente.", usuarios=usuarios)
