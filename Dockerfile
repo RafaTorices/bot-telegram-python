@@ -6,7 +6,8 @@ WORKDIR /src
 COPY src .
 COPY requirements.txt .
 # Instal and update pip
-RUN python -m pip install --upgrade pip
+RUN python -m pip install --upgrade pip && \
+    pip install python-dotenv
 # Install requirements for app
 RUN pip install -r requirements.txt
 # Expose port for flask app
