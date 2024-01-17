@@ -1,8 +1,10 @@
-
+from dotenv import load_dotenv
 from flask import Flask, request, render_template, url_for
 from application.web import webhook, getWebhookInfo, listado_usuarios, \
     estado_servicio, activar_desactivar_usuario, \
     listado_opciones, editar_opcion
+
+load_dotenv()
 
 app = Flask(__name__, template_folder='application/templates',
             static_folder='application/static')

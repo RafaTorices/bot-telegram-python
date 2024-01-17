@@ -1,11 +1,17 @@
+import os
+from dotenv import load_dotenv
 # Parametros de configuracion del servicio
+
+load_dotenv()
+
+
 class TelegramConfig():
     APIURL = 'https://api.telegram.org/bot'
-    TOKEN = '6407826451:AAEu6Tx2BVpht8BvA-yDtYzwip3aKRPsYP4'
-    TITULO_APP = "TriangleAppBot\n\n"
-    TELEFONO_SOPORTE = ""
-    CHAT_ID_SOPORTE = "409645379"
-    EMAIL_SOPORTE = ""
+    TOKEN = os.getenv('TOKEN')
+    TITULO_APP = os.getenv('TITULO_APP')
+    TELEFONO_SOPORTE = os.getenv('TELEFONO_SOPORTE')
+    CHAT_ID_SOPORTE = os.getenv('CHAT_ID_SOPORTE')
+    EMAIL_SOPORTE = os.getenv('EMAIL_SOPORTE')
 
 # Configuracion de MySQL
 
