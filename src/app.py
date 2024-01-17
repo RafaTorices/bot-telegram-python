@@ -2,7 +2,8 @@ from dotenv import load_dotenv
 from flask import Flask, request, render_template, url_for
 from application.web import webhook, getWebhookInfo, listado_usuarios, \
     estado_servicio, activar_desactivar_usuario, \
-    listado_opciones, editar_opcion, enviar_mensajes , listado_mensajes
+    listado_opciones, editar_opcion, enviar_mensajes , listado_mensajes \
+    , deleteWebhook, setWebhook
 
 load_dotenv()
 
@@ -24,10 +25,17 @@ def error404_(error):
 def webhook_():
     return webhook()
 
-
 @app.route('/getWebhookInfo', methods=['GET'])
 def getWebhookInfo_():
     return getWebhookInfo()
+
+@app.route('/setWebhook', methods=['POST'])
+def setWebhook_():
+    return setWebhook()
+
+@app.route('/deleteWebhook', methods=['GET'])
+def deleteWebhook_():
+    return deleteWebhook()
 
 
 @app.route('/listado_usuarios', methods=['GET'])
@@ -77,4 +85,6 @@ if __name__ == "__main__":
         listadoopciones = url_for('listado_opciones_')
         enviarmensajes = url_for('enviar_mensajes_')
         listadomensajes = url_for('listado_mensajes_')
+        deletewebhook = url_for('deleteWebhook_')
+        setwebhook = url_for('setWebhook_')
     app.run()

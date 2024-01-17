@@ -6,6 +6,7 @@ load_dotenv()
 
 
 class TelegramConfig():
+    URL_WEBHOOK = os.getenv('URL_WEBHOOK')
     APIURL = 'https://api.telegram.org/bot'
     TOKEN = os.getenv('TOKEN')
     TITULO_APP = os.getenv('TITULO_APP')+"\n\n"

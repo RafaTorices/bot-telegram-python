@@ -125,7 +125,7 @@ class Usuario():
         
     def listadoMensajesWeb(self):
         self.cursor = self.conexion.cursor()
-        self.sql = "SELECT updated, first_name, username, mensaje FROM mensajes ORDER BY updated DESC"
+        self.sql = "SELECT updated, first_name, username, mensaje FROM mensajes ORDER BY updated DESC LIMIT 100"
         self.cursor.execute(self.sql)
         self.resultado = self.cursor.fetchall()
         return self.resultado

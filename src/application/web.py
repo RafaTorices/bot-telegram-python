@@ -24,6 +24,25 @@ def getWebhookInfo():
         return render_template('get_webhook_info.html', data=data)
     else:
         return render_template('get_webhook_info.html', error="Error: "+response)
+    
+def deleteWebhook():
+    apiURL = TelegramConfig.APIURL+TelegramConfig.TOKEN+"/deleteWebhook"
+    response = requests.get(apiURL)
+    if response.status_code == 200:
+        respuesta = response.json()
+        return render_template('home.html', respuesta=respuesta)
+    else:
+        return render_template('get_webhook_info.html', error="Error: "+response)
+    
+
+def setWebhook():
+    apiURL = TelegramConfig.APIURL+TelegramConfig.TOKEN+"/setWebhook?url="+TelegramConfig.URL_WEBHOOK
+    response = requests.post(apiURL)
+    if response.status_code == 200:
+        respuesta = response.json()
+        return render_template('home.html', respuesta=respuesta)
+    else:
+        return render_template('get_webhook_info.html', error="Error: "+response)
 
 
 def listado_usuarios():

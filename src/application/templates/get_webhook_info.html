@@ -8,6 +8,8 @@
             <th>URL</th>
             <th>IP_address</th>
             <th>Messages Pending</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -25,10 +27,22 @@
             <td>
                 {{ data["result"]["pending_update_count"] }}
             </td>
+            <td>
+                <form action="{{ url_for('deleteWebhook_') }}" method="get">
+                    <button type="submit">deleteWebHook</button>
+                </form>
+            </td>
+            <td>
+                <form action="{{ url_for('setWebhook_') }}" method="post">
+                    <button type="submit">setWebhook</button>
+                </form>
+            </td>
         </tr>
     </tbody>
     {% else %}
-    <div>No hay información</div>
+    {% endif %}
+    {% if error %}
+    <div style="color: gold;">{{ error }}</div>
     {% endif %}
 </table>
 {% endblock %}
