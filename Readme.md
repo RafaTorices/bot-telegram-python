@@ -16,6 +16,8 @@ La aplicación crea un Bot de Telegram que permite interactuar con el usuario qu
 - MySQL 8.0 (https://dev.mysql.com/downloads/mysql/)
 - Python mysql-connector-python (https://pypi.org/project/mysql-connector-python/)
 - Python Flask (https://pypi.org/project/Flask/)
+- ### **REQUISITO OBLIGATORIO PARA EL FUNCIONAMIENTO DEL BOT**:
+    > Es requisito obligatorio para el funcionamiento del Bot de Telegram establecer nuestro Webhook apuntando a una URL que sea accesible desde Internet y que disponga de un certificado SSL válido. Establecer esa URL en la variable de entorno **URL_WEBHOOK** del fichero **.env** y setear el Webhook desde la aplicación web Python Flask.
 
 ## Estructura del proyecto
 
