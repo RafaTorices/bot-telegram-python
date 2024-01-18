@@ -17,6 +17,32 @@ La aplicación crea un Bot de Telegram que permite interactuar con el usuario qu
 - Python mysql-connector-python (https://pypi.org/project/mysql-connector-python/)
 - Python Flask (https://pypi.org/project/Flask/)
 
+## Estructura del proyecto
+
+- **config**: ficheros de configuración de la aplicación, incluyendo el fichero de configuración de la base de datos MySQL (db.sql).
+- **images**: imágenes para el fichero Readme.md.
+- **src**: código fuente de la aplicación.
+  - **application**: código fuente de la aplicación web Python Flask.
+    - **static**: ficheros estáticos de la aplicación web.
+      - **css**: ficheros CSS de estilos de la aplicación web.
+    - **templates**: ficheros HTML de la aplicación web.
+    - **config.py**: fichero de configuración del Bot.
+    - **estado.py**: fichero con las funciones de estado del Bot.
+    - **metodos.py**: fichero con las funciones de los métodos del Bot.
+    - **mysql.py**: fichero con la config de la base de datos MySQL para el Bot.
+    - **opciones.py**: fichero con las funciones de las opciones del Bot.
+    - **respuesta.py**: fichero con las funciones de respuesta del Bot.
+    - **servicio.py**: fichero con las funciones del servicio del Bot.
+    - **usuarios.py**: fichero con las funciones de los usuarios del Bot.
+    - **web.py**: fichero con las funciones de la aplicación web Python Flask.
+  - **tests**: ficheros de test de la aplicación.
+  - **app.py**: fichero principal de la aplicación.
+- **docker-compose.yml**: fichero de Docker-Compose para el despliegue de la aplicación.
+- **Dockerfile**: fichero de Docker con la imagen de la aplicación.
+- **env_example**: fichero de ejemplo de las variables de entorno necesarias para el despliegue de la aplicación.
+- **README.md**: fichero con la documentación de la aplicación.
+- **requirements.txt**: fichero con las dependencias de la aplicación.
+
 ## Despliegue de la aplicación en local mediante Docker-Compose
 
 > ### **IMPORTANTE**:
@@ -61,5 +87,15 @@ docker-compose up -d
 http://localhost:5000
 ```
 
-![Alt text](image.png)
+![Alt text](images/image.png)
+
+![Alt text](images/image-1.png)
+
+![Alt text](images/image-2.png)
+
+![Alt text](images/image-3.png)
+
+![Alt text](images/image-4.png)
+
+![Alt text](images/image-5.png)
 
