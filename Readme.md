@@ -162,23 +162,55 @@ docker-compose up -d
 http://localhost:5000
 ```
 
-![Alt text](images/image.png)
+## Funcionamiento de la aplicación
 
-![Alt text](images/image-1.png)
+### Bot de Telegram
 
-![Alt text](images/image-2.png)
+- Buscar el Bot de Telegram en la app oficial de Telegram con el nombre que se haya configurado en la variable de entorno **TITULO_APP** del fichero **.env**.
+- Una vez localizado, iniciar con el comando **/start** que aparece en la app.
+- Al iniciar el Bot de Telegram, se muestra un mensaje de bienvenida y se le informa que el administrador del Bot ha recibido una notificación para que le active el servicio.
+- El administrador del Bot (CHAT_ID configurado en la variable de entorno **CHAT_ID_SOPORTE** del fichero **.env**) recibe una notificación en la app de Telegram con el mensaje del usuario que ha iniciado el Bot.
+- El administrador del Bot puede activar el servicio para el usuario a través de la interfaz web de la aplicación.
+- Una vez activado el servicio, el usuario puede interactuar con el Bot a través de las opciones que se le muestran en la app de Telegram.
+- Si el usuario envía un mensaje al Bot que no es una opción disponible, el Bot le responde con un mensaje informándole que entiende lo que le dice y le muestra las opciones disponibles para que elija una.
+- Si el usuario no ha sido activado por el administrador del Bot, el Bot le responde con un mensaje informándole que no ha sido activado y que el servicio no es accesible para él.
 
-![Alt text](images/image-3.png)
+### Interfaz web
 
-![Alt text](images/image-4.png)
+- Acceder a la aplicación web Python Flask en el navegador.
+- Aparece una interfaz web con las opciones disponibles para gestionar el Bot de Telegram.
 
-![Alt text](images/image-5.png)
+  ### Opciones disponibles:
 
-![Alt text](images/image-6.png)
+  - **WebhookInfo**: muestra la información del webhook del Bot. Desde esta opción se puede obtener la información del webhook, establecer uno nuevo, eliminarlo o actualizarlo.
+  - **Usuarios**: muestra la lista de usuarios que pueden interactuar con el Bot y su estado. Desde esta opción se pueden activar/desactivar usuarios.
+  - **Opciones**: muestra la lista de opciones disponibles para el Bot. Desde esta opción se pueden editar las opciones disponibles que se muestran en la app de Telegram.
+  - **Servicio**: muestra el estado del servicio del Bot. Desde esta opción se puede activar/desactivar el servicio. Si se desactiva el servicio (nos pedirá una causa), los usuarios que interactúen con el Bot recibirán un mensaje informándoles de que el servicio está desactivado por la causa especificada y no podrán interactuar con el Bot. Si se activa el servicio, los usuarios que interactúen con el Bot recibirán un mensaje informándoles de que el servicio está activado y podrán interactuar con el Bot.
+  - **Enviar Mensajes**: opción para enviar mensajes directos a los usuarios que pueden interactuar con el Bot.
+  - **Listado Mensajes**: muestra el listado de mensajes que los usuarios han enviado al Bot.
 
-![Alt text](images/image-7.png)
+## Imágenes de la aplicación
 
-![Alt text](images/image-8.png)
+  ### Interfaz web
+  ![Alt text](images/image.png)
+
+  ![Alt text](images/image-1.png)
+
+  ![Alt text](images/image-2.png)
+
+  ![Alt text](images/image-3.png)
+
+  ![Alt text](images/image-4.png)
+
+  ![Alt text](images/image-5.png)
+
+  ### Bot en la App Telegram
+
+  ![Alt text](images/image-6.png)
+
+  ![Alt text](images/image-7.png)
+
+  ![Alt text](images/image-8.png)
 
 ## Fuentes
 
